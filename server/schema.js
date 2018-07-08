@@ -69,22 +69,44 @@ const queryType = new graphql.GraphQLObjectType({
             },
             resolve: (root, args) => {
                 const {users} = data;
-                console.log('root', root)
-
-                const userData = users.filter(user => {
-                    console.log('user.id', user.id, 'args.id', args.id)
-                    return user.id === args.id ? user : null
+                const userData = users.find(user => {
+                    return user.id === args.id && user;
                 });
 
-                console.log('user', userData);
-                return userData[0];
+                return userData;
             }
         },
         post: {
-            type: postType
+            type: postType,
+            args: {
+                id: {
+                    type: graphql.GraphQLInt
+                }
+            },
+            resolve: (root, args) => {
+                const {posts} = data;
+                const postData = posts.find(post => {
+                    return post.id === args.id && post;
+                });
+
+                return postData;
+            }
         },
         comment: {
-            type: commentType
+            type: commentType,
+            args: {
+                id: {
+                    type: graphql.GraphQLInt
+                }
+            },
+            resolve: (root, args) => {
+                const {comments} = data;
+                const commentData = comments.find(comment => {
+                    return comment.id === args.id && comment;
+                });
+
+                return commentData;
+            }
         }
     }
 });
