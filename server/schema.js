@@ -89,6 +89,7 @@ const queryType = new graphql.GraphQLObjectType({
     }
 });
 
+
 const schema = new graphql.GraphQLSchema({
     query: queryType
 });
