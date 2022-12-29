@@ -19,6 +19,6 @@
     "koa-router": "^7.4.0"
   },
   "devDependencies": {
-    "webpack": "^4.15.1"
+    "webpack": "^5.75.0"
   }
 }
